@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Photo gallery of Uganda's top destinations: Murchison Falls, Lake Victoria, Queen Elizabeth National Park and Bwindi Impenetrable Forest.">
+    <title>Gallery | Explore Uganda</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <!-- External stylesheet -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- ===== GALLERY ===== -->
+    <section class="gallery" id="gallery">
+
+        <header class="gallery-header">
+            <span class="eyebrow">Photo Gallery</span>
+            <h1>Explore Uganda</h1>
+            <p class="subtitle">
+                Discover the beauty of the Pearl of Africa &mdash; thundering waterfalls,
+                vast lakes, open savannah and ancient rainforest.
+            </p>
+        </header>
+
+        <!-- Filter buttons -->
+        <div class="filters" role="group" aria-label="Filter photos">
+            <button class="filter-btn active" data-filter="all">All</button>
+            <button class="filter-btn" data-filter="water">Waterfalls &amp; Lakes</button>
+            <button class="filter-btn" data-filter="wildlife">Wildlife</button>
+            <button class="filter-btn" data-filter="forest">Forests</button>
+        </div>
+
+        <div class="gallery-grid">
+
+            <!-- Card 1 (featured) -->
+            <figure class="card card--tall" data-category="water">
+                <img src="murchison falls.png" alt="Murchison Falls forcing through a narrow gorge surrounded by green forest" loading="lazy">
+                <figcaption class="caption">
+                    <span class="tag">Waterfall</span>
+                    <h3>Murchison Falls</h3>
+                    <p>The Nile bursts through a 7&nbsp;m gorge &mdash; the most powerful waterfall in the world.</p>
+                    <span class="location">Murchison Falls National Park</span>
+                </figcaption>
+            </figure>
+
+            <!-- Card 2 -->
+            <figure class="card" data-category="water">
+                <img src="L.Victoria.png" alt="Calm, clear water on the sandy shore of Lake Victoria under a blue sky" loading="lazy">
+                <figcaption class="caption">
+                    <span class="tag">Lake</span>
+                    <h3>Lake Victoria</h3>
+                    <p>Africa's largest lake and the source of the River Nile.</p>
+                    <span class="location">Entebbe &amp; Jinja</span>
+                </figcaption>
+            </figure>
+
+            <!-- Card 3 -->
+            <figure class="card" data-category="wildlife">
+                <img src="images.jpg" alt="A herd of African elephants with calves walking through golden savannah grass" loading="lazy">
+                <figcaption class="caption">
+                    <span class="tag">Wildlife</span>
+                    <h3>Queen Elizabeth National Park</h3>
+                    <p>Elephants, tree-climbing lions and the Kazinga Channel.</p>
+                    <span class="location">Western Uganda</span>
+                </figcaption>
+            </figure>
+
+            <!-- Card 4 -->
+            <figure class="card" data-category="forest wildlife">
+                <img src="Bwindi Impenetrable.png" alt="A mountain gorilla looking out from dense green forest" loading="lazy">
+                <figcaption class="caption">
+                    <span class="tag">Forest</span>
+                    <h3>Bwindi Impenetrable Forest</h3>
+                    <p>Home to nearly half of the world's mountain gorillas.</p>
+                    <span class="location">South-western Uganda</span>
+                </figcaption>
+            </figure>
+
+            <!-- Card 5 -->
+            <figure class="card" data-category="wildlife">
+                <img src="Queen Elizabeth.png" alt="Four Rothschild's giraffes standing in tall grass" loading="lazy">
+                <figcaption class="caption">
+                    <span class="tag">Wildlife</span>
+                    <h3>Rothschild's Giraffes</h3>
+                    <p>Graceful giraffes roaming the savannah north of the Nile.</p>
+                    <span class="location">Murchison Falls National Park</span>
+                </figcaption>
+            </figure>
+
+        </div>
+    </section>
+
+    <!-- ===== LIGHTBOX (full-size viewer) ===== -->
+    <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Image viewer" hidden>
+        <button class="lb-btn lb-close" aria-label="Close">&times;</button>
+        <button class="lb-btn lb-prev" aria-label="Previous image">&#10094;</button>
+        <figure class="lb-content">
+            <img id="lb-img" src="" alt="">
+            <figcaption>
+                <h3 id="lb-title"></h3>
+                <p id="lb-location"></p>
+            </figcaption>
+        </figure>
+        <button class="lb-btn lb-next" aria-label="Next image">&#10095;</button>
+    </div>
+
+    <script src="gallery.js"></script>
+</body>
+</html>

@@ -1,0 +1,378 @@
+/* =========================================================
+   EXPLORE UGANDA — GALLERY STYLES
+   ========================================================= */
+
+/* ---------- Theme colours (change these to restyle the whole page) ---------- */
+:root {
+    --primary: #1f4d3a;        /* deep forest green */
+    --primary-dark: #143326;
+    --accent: #e0a526;         /* savannah gold */
+    --text: #1d2420;
+    --text-muted: #5f6b64;
+    --bg: #f7f5f0;             /* warm off-white */
+    --white: #ffffff;
+    --radius: 14px;
+    --shadow: 0 6px 20px rgba(20, 40, 30, 0.12);
+    --shadow-hover: 0 14px 34px rgba(20, 40, 30, 0.22);
+    --transition: 0.4s ease;
+}
+
+/* ---------- Base ---------- */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: "Poppins", Arial, sans-serif;
+    color: var(--text);
+    background: var(--bg);
+    line-height: 1.6;
+}
+
+img {
+    max-width: 100%;
+    display: block;
+}
+
+/* =========================================================
+   GALLERY SECTION
+   ========================================================= */
+.gallery {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 80px 20px;
+}
+
+/* ---------- Header ---------- */
+.gallery-header {
+    text-align: center;
+    max-width: 640px;
+    margin: 0 auto 40px;
+}
+
+.eyebrow {
+    display: inline-block;
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 10px;
+}
+
+.gallery-header h1 {
+    font-family: "Playfair Display", Georgia, serif;
+    font-size: clamp(2.2rem, 5vw, 3.4rem);
+    color: var(--primary);
+    margin: 0 0 15px;
+    line-height: 1.15;
+}
+
+/* small gold line under the heading */
+.gallery-header h1::after {
+    content: "";
+    display: block;
+    width: 70px;
+    height: 3px;
+    background: var(--accent);
+    margin: 18px auto 0;
+    border-radius: 3px;
+}
+
+.subtitle {
+    color: var(--text-muted);
+    font-size: 1.05rem;
+    margin: 0;
+}
+
+/* ---------- Filter buttons ---------- */
+.filters {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 40px;
+}
+
+.filter-btn {
+    font-family: inherit;
+    font-size: 0.9rem;
+    font-weight: 500;
+    padding: 10px 22px;
+    border: 2px solid var(--primary);
+    border-radius: 50px;
+    background: transparent;
+    color: var(--primary);
+    cursor: pointer;
+    transition: background var(--transition), color var(--transition);
+}
+
+.filter-btn:hover,
+.filter-btn.active {
+    background: var(--primary);
+    color: var(--white);
+}
+
+.filter-btn:focus-visible {
+    outline: 3px solid var(--accent);
+    outline-offset: 2px;
+}
+
+/* ---------- Grid ---------- */
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-auto-rows: 260px;
+    gap: 22px;
+}
+
+/* the featured card is twice as tall */
+.card--tall {
+    grid-row: span 2;
+}
+
+/* ---------- Card ---------- */
+.card {
+    position: relative;
+    margin: 0;
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    cursor: pointer;
+    background: var(--primary-dark);
+    transition: transform var(--transition), box-shadow var(--transition);
+}
+
+.card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.7s ease;
+}
+
+/* dark gradient so white text is always readable */
+.card::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(10, 25, 18, 0.88) 0%, rgba(10, 25, 18, 0.25) 45%, transparent 70%);
+    pointer-events: none;
+}
+
+.card:hover,
+.card:focus-visible {
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-hover);
+}
+
+.card:hover img,
+.card:focus-visible img {
+    transform: scale(1.08);
+}
+
+.card:focus-visible {
+    outline: 3px solid var(--accent);
+    outline-offset: 3px;
+}
+
+/* ---------- Caption ---------- */
+.caption {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1;
+    padding: 22px;
+    color: var(--white);
+}
+
+.caption .tag {
+    display: inline-block;
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    background: var(--accent);
+    color: var(--text);
+    padding: 3px 10px;
+    border-radius: 50px;
+    margin-bottom: 8px;
+}
+
+.caption h3 {
+    font-family: "Playfair Display", Georgia, serif;
+    font-size: 1.35rem;
+    margin: 0 0 4px;
+    line-height: 1.25;
+}
+
+/* description slides in on hover */
+.caption p {
+    font-size: 0.88rem;
+    font-weight: 300;
+    margin: 0;
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    transition: max-height var(--transition), opacity var(--transition), margin var(--transition);
+}
+
+.card:hover .caption p,
+.card:focus-visible .caption p {
+    max-height: 80px;
+    opacity: 1;
+    margin-bottom: 6px;
+}
+
+.caption .location {
+    display: block;
+    font-size: 0.8rem;
+    opacity: 0.85;
+}
+
+.caption .location::before {
+    content: "\25CF";      /* small dot marker */
+    color: var(--accent);
+    margin-right: 6px;
+    font-size: 0.6rem;
+    vertical-align: middle;
+}
+
+/* hidden by filter */
+.card.is-hidden {
+    display: none;
+}
+
+/* =========================================================
+   LIGHTBOX
+   ========================================================= */
+.lightbox {
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    background: rgba(8, 18, 13, 0.94);
+    animation: fadeIn 0.3s ease;
+}
+
+.lightbox[hidden] {
+    display: none;
+}
+
+.lb-content {
+    margin: 0;
+    max-width: 1000px;
+    text-align: center;
+    color: var(--white);
+}
+
+.lb-content img {
+    max-width: 100%;
+    max-height: 75vh;
+    margin: 0 auto;
+    border-radius: 10px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+}
+
+.lb-content h3 {
+    font-family: "Playfair Display", Georgia, serif;
+    font-size: 1.5rem;
+    margin: 18px 0 4px;
+}
+
+.lb-content p {
+    margin: 0;
+    color: var(--accent);
+    font-size: 0.9rem;
+}
+
+.lb-btn {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    border: none;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.12);
+    color: var(--white);
+    font-size: 1.4rem;
+    cursor: pointer;
+    transition: background var(--transition);
+}
+
+.lb-btn:hover,
+.lb-btn:focus-visible {
+    background: var(--accent);
+    color: var(--text);
+    outline: none;
+}
+
+.lb-close { top: 20px; right: 20px; font-size: 2rem; line-height: 1; }
+.lb-prev  { left: 20px;  top: 50%; transform: translateY(-50%); }
+.lb-next  { right: 20px; top: 50%; transform: translateY(-50%); }
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+/* Tablets: 2 columns */
+@media (max-width: 900px) {
+    .gallery {
+        padding: 60px 20px;
+    }
+
+    .gallery-grid {
+        grid-template-columns: repeat(2, 1fr);
+        grid-auto-rows: 230px;
+    }
+}
+
+/* Phones: 1 column, captions always visible */
+@media (max-width: 600px) {
+    .gallery {
+        padding: 50px 16px;
+    }
+
+    .gallery-grid {
+        grid-template-columns: 1fr;
+        grid-auto-rows: 260px;
+        gap: 18px;
+    }
+
+    .card--tall {
+        grid-row: span 1;
+    }
+
+    .caption p {
+        max-height: 80px;
+        opacity: 1;
+        margin-bottom: 6px;
+    }
+
+    .lb-prev,
+    .lb-next {
+        top: auto;
+        bottom: 20px;
+        transform: none;
+    }
+}
+
+/* Respect users who prefer less motion */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        transition: none !important;
+        animation: none !important;
+    }
+}
